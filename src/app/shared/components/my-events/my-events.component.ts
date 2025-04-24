@@ -22,7 +22,7 @@ export class MyEventsComponent {
   constructor(private eventsService: EventService) {}
 
   ngOnInit(): void {
-    this.events$ = this.eventsService.getEvents();
+    this.events$ = this.eventsService.getMyEvents();
   }
 
   trackByIndex(_index: number, _item: any): number {
