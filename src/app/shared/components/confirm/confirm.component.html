@@ -1,0 +1,36 @@
+<div class="flex items-center justify-center min-h-screen bg-gray-50 p-4">
+    <div class="w-full max-w-sm bg-white p-6 border border-gray-300 rounded-lg shadow-md">
+        <h2 class="text-xl font-medium text-center mb-4">Confirma tu cuenta</h2>
+        <p class="text-sm text-gray-600 text-center mb-6">
+            Hemos enviado un código de 6 dígitos a tu correo. Ingrésalo aquí para activar tu cuenta.
+        </p>
+
+        <form [formGroup]="confirmForm" (ngSubmit)="onSubmit()" class="space-y-4">
+            <!-- Email (solo lectura) -->
+            <div class="flex flex-col text-sm">
+                <label for="email" class="mb-1">Correo electrónico</label>
+                <input pInputText id="email" formControlName="email" [disabled]="true"
+                    class="w-full border rounded px-3 py-2 bg-gray-100 cursor-not-allowed" />
+            </div>
+
+            <!-- Código -->
+            <div class="flex flex-col text-sm">
+                <label for="code" class="mb-1">Código de confirmación</label>
+                <input pInputText id="code" formControlName="code" maxlength="6" placeholder="XXXXXX"
+                    class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                <small *ngIf="confirmForm.get('code')?.invalid && confirmForm.get('code')?.touched"
+                    class="text-red-600 mt-1">
+                    Ingresa el código de 6 dígitos.
+                </small>
+            </div>
+
+
+            <div class="flex items-center justify-center">
+                <p-button type="submit" severity="info" class="pt-4 rounded-lg" label="Confirmar cuenta"
+                    [disabled]="confirmForm.invalid || loading" [raised]="true" size="small" />
+            </div>
+
+            <p *ngIf="error" class="text-red-600 text-sm text-center mt-2">{{ error }}</p>
+        </form>
+    </div>
+</div>

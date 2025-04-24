@@ -1,94 +1,69 @@
 <div class="flex flex-col p-5">
-    <h1 class="font-medium text-2xl">Crear Nuevo Evento</h1>
-    <p class="text-base pb-3">Información Básica</p>
-</div>
+  <h1 class="font-medium text-2xl">Crear Nuevo Evento</h1>
+  <p class="text-base pb-3">Información Básica</p>
 
-
-<form class="max-w-2xl mx-auto bg-white shadow p-6 rounded-lg space-y-6">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <!-- Nombre del evento -->
+
       <div class="flex flex-col">
         <label for="eventName" class="mb-1 font-medium text-sm">Nombre del evento</label>
-        <input pInputText id="eventName" formControlName="eventName"
-               class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+        <input pInputText id="eventName" formControlName="title"
+          class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
       </div>
-  
-      <!-- URL de la imagen -->
+
       <div class="flex flex-col">
         <label for="imageUrl" class="mb-1 font-medium text-sm">URL de la imagen</label>
-        <input pInputText id="imageUrl" formControlName="imageUrl"
-               class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+        <input pInputText id="imageUrl" formControlName="image"
+          class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
       </div>
-  
-      <!-- Precio -->
+
       <div class="flex flex-col">
         <label for="price" class="mb-1 font-medium text-sm">Precio (€)</label>
-        <p-inputNumber inputId="price" formControlName="price" 
-                       [mode]="'decimal'" [min]="0" [useGrouping]="false"
-                       class="w-full"></p-inputNumber>
+        <p-inputNumber inputId="price" formControlName="price" [mode]="'decimal'" [min]="0" [useGrouping]="false"
+          class="w-full"></p-inputNumber>
       </div>
-  
-      <!-- Máximo de asistentes -->
+
       <div class="flex flex-col">
         <label for="capacity" class="mb-1 font-medium text-sm">Máximo de asistentes</label>
-        <p-inputNumber inputId="capacity" formControlName="capacity" 
-                       [mode]="'decimal'" [min]="0" [useGrouping]="false"
-                       class="w-full"></p-inputNumber>
+        <p-inputNumber inputId="capacity" formControlName="attendeesCapacity" [mode]="'decimal'" [min]="0"
+          [useGrouping]="false" class="w-full"></p-inputNumber>
       </div>
-  
-      <!-- Reservaciones -->
-      <div class="flex flex-col">
-        <label for="reservations" class="mb-1 font-medium text-sm">Reservaciones</label>
-        <p-inputNumber inputId="reservations" formControlName="reservations" 
-                       [mode]="'decimal'" [min]="0" [useGrouping]="false"
-                       class="w-full"></p-inputNumber>
-      </div>
-  
-      <!-- Porcentaje de ventas -->
-      <div class="flex flex-col">
-        <label for="soldPercentage" class="mb-1 font-medium text-sm">Porcentaje de ventas (%)</label>
-        <p-inputNumber inputId="soldPercentage" formControlName="soldPercentage" 
-                       [mode]="'decimal'" [min]="0" [max]="100" [showButtons]="true"
-                       class="w-full"></p-inputNumber>
-      </div>
-  
-      <!-- Ciudad -->
+
       <div class="flex flex-col">
         <label for="city" class="mb-1 font-medium text-sm">Ciudad</label>
-        <p-dropdown inputId="city" [options]="cities" formControlName="selectedCity"
-                    optionLabel="name" placeholder="Selecciona..."
-                    class="w-full"></p-dropdown>
+        <p-dropdown inputId="city" [options]="cities" formControlName="location" optionLabel="name"
+          optionValue="name"
+          placeholder="Selecciona..." class="w-full"></p-dropdown>
       </div>
-  
-      <!-- Categoría -->
+
       <div class="flex flex-col">
         <label for="category" class="mb-1 font-medium text-sm">Categoría</label>
-        <p-dropdown inputId="category" [options]="categories" formControlName="category"
-                    placeholder="Selecciona..."
-                    class="w-full"></p-dropdown>
+        <p-dropdown inputId="category" [options]="categories" formControlName="category" placeholder="Selecciona..."
+          class="w-full"></p-dropdown>
       </div>
-  
-      <!-- Fecha de inicio -->
+
       <div class="flex flex-col">
         <label for="startDate" class="mb-1 font-medium text-sm">Fecha inicio</label>
-        <p-calendar inputId="startDate" formControlName="startDate"
-                    dateFormat="yy-mm-dd" showIcon="true"
-                    class="w-full"></p-calendar>
+        <p-calendar inputId="startDate" formControlName="startDate" dateFormat="yy-mm-dd" showIcon="true"
+          class="w-full"></p-calendar>
       </div>
-  
-      <!-- Fecha de fin -->
+
       <div class="flex flex-col">
         <label for="endDate" class="mb-1 font-medium text-sm">Fecha fin</label>
-        <p-calendar inputId="endDate" formControlName="endDate"
-                    dateFormat="yy-mm-dd" showIcon="true"
-                    class="w-full"></p-calendar>
+        <p-calendar inputId="endDate" formControlName="endDate" dateFormat="yy-mm-dd" showIcon="true"
+          class="w-full"></p-calendar>
       </div>
     </div>
-  
-    <!-- Botón de envío -->
+
+    <div class="flex flex-col text-sm">
+      <label class="mb-1">Etiqueta</label>
+      <input pInputText formControlName="label" placeholder="Entradas limitadas"
+        class="w-full border rounded px-3 py-2" />
+    </div>
+
     <div class="flex justify-end">
-      <button pButton type="submit" label="Guardar evento"
-              class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-6 py-2 rounded-lg"></button>
+      <button pButton type="submit" label="Crear evento"
+        class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-6 py-2 rounded-lg"></button>
     </div>
   </form>
-  
+</div>

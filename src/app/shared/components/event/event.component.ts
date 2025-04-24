@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { Chip } from 'primeng/chip';
 import { EventModel } from '../../models/event.model';
@@ -26,5 +26,4 @@ export class EventComponent {
   trackByIndex(_index: number, _item: any): number {
     return _index;
   }
-
 }

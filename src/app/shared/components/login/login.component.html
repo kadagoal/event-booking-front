@@ -3,22 +3,25 @@
         <h2 class="text-2xl font-medium text-center">¡Bienvenido de nuevo!</h2>
         <p class="text-center text-sm font-light pb-5">Inicia Sesión para acceder a tú cuenta</p>
 
-        <div class="text-sm font-light">
-            <label for="email">Correo electrónico</label>
-            <input pInputText id="email" placeholder="tucorreo@ejemplo.com"
-                class="border border-gray-300 rounded focus:outline-none w-full" />
-        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="text-sm font-light">
+                <label for="email">Correo electrónico</label>
+                <input pInputText id="email" placeholder="tucorreo@ejemplo.com"
+                    class="border border-gray-300 rounded focus:outline-none w-full" formControlName="email" required/>
+            </div>
 
-        <div class="flex flex-col text-sm font-light mt-4 mb-4 w-full">
-            <label for="password" class="mb-1">Contraseña</label>
-            <p-password inputId="password" [toggleMask]="true" feedback="false" placeholder="••••••••"
-                styleClass="w-full" inputStyleClass="w-full"></p-password>
-        </div>
+            <div class="flex flex-col text-sm font-light mt-4 mb-4 w-full">
+                <label for="password" class="mb-1">Contraseña</label>
+                <p-password inputId="password" [toggleMask]="true" feedback="false" placeholder="••••••••"
+                    styleClass="w-full" inputStyleClass="w-full" formControlName="password" required></p-password>
+            </div>
 
-        <div class="flex items-center justify-center">
-            <p-button type="submit" class="pt-4 rounded-lg" label="Iniciar sesión" severity="info" [raised]="true"
-                size="small" />
-        </div>
+            <div class="flex items-center justify-center">
+                <p-button type="submit" class="pt-4 rounded-lg" label="Iniciar sesión" severity="info" [raised]="true"
+                    size="small" />
+            </div>
+            <p *ngIf="error" class="text-red-600 text-sm">{{ error }}</p>
+        </form>
 
         <p class="text-center text-sm font-light pt-4">
             ¿No tienes una cuenta?

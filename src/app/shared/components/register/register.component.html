@@ -2,45 +2,47 @@
     <div class="w-1/3 bg-white p-6 border-2 border-gray-300 rounded-lg shadow-md">
         <h2 class="text-2xl font-medium text-center pb-1">Registro de Usuario</h2>
 
-        <div class="text-sm font-light mt-4 mb-4">
-            <label for="email">Nombre Completo *</label>
-            <input pInputText id="email" placeholder="Ej. Daniela Gómez"
-                class="border border-gray-300 rounded focus:outline-none w-full" />
-        </div>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="space-y-4">
 
-        <div class="text-sm font-light">
-            <label for="email">Correo electrónico *</label>
-            <input pInputText id="email" placeholder="tucorreo@ejemplo.com"
-                class="border border-gray-300 rounded focus:outline-none w-full" />
-        </div>
+            <div class="text-sm font-light mt-4 mb-4">
+                <label for="email">Nombre Completo *</label>
+                <input pInputText id="name" formControlName="name" placeholder="Ej. Daniela Gómez"
+                    class="border border-gray-300 rounded focus:outline-none w-full" />
+            </div>
 
-        <div class="flex flex-col text-sm font-light mt-4 mb-4 w-full">
-            <label for="password" class="mb-1">Contraseña *</label>
-            <p-password inputId="password" [toggleMask]="true" feedback="false" placeholder="••••••••"
-                styleClass="w-full" inputStyleClass="w-full"></p-password>
-        </div>
+            <div class="text-sm font-light">
+                <label for="email">Correo electrónico *</label>
+                <input pInputText id="email" placeholder="tucorreo@ejemplo.com" formControlName="email"
+                    class="border border-gray-300 rounded focus:outline-none w-full" />
+            </div>
 
-        <div class="text-sm font-light">
-            <label for="email">Telefono Celular *</label>
-            <p-inputNumber id="email" placeholder="Ej. 3197088702"
-                class="border border-gray-300 rounded focus:outline-none w-full" />
-        </div>
+            <div class="flex flex-col text-sm font-light mt-4 mb-4 w-full">
+                <label for="password" class="mb-1">Contraseña *</label>
+                <p-password inputId="password" [toggleMask]="true" feedback="false" placeholder="••••••••"
+                formControlName="password_hash" styleClass="w-full" inputStyleClass="w-full"></p-password>
+            </div>
 
-        <div class="flex flex-col text-sm font-light mt-4 mb-4 w-full">
-            <label for="email">Selecciona un rol *</label>
-            <p-select [options]="roles" optionLabel="name" optionValue="value" [(ngModel)]="selectedRole"
-                placeholder="Selecciona el rol" class="w-full" />
-        </div>
+            <div class="text-sm font-light">
+                <label for="email">Telefono Celular *</label>
+                <input pInputText id="cellphone" placeholder="tucorreo@ejemplo.com" formControlName="cellphone"
+                    class="border border-gray-300 rounded focus:outline-none w-full" />
+            </div>
 
-        <div class="flex items-center justify-center">
-            <p-button type="submit" class="pt-4 rounded-lg" label="Crear Cuenta" severity="info" [raised]="true"
-                size="small" />
-        </div>
+            <div class="flex flex-col text-sm font-light mt-4 mb-4 w-full">
+                <label for="email">Selecciona un rol *</label>
+                <p-select [options]="roles" optionLabel="name" optionValue="value" [(ngModel)]="selectedRole"
+                formControlName="role" placeholder="Selecciona el rol" class="w-full" />
+            </div>
 
+            <div class="flex items-center justify-center">
+                <p-button type="submit" class="pt-4 rounded-lg" label="Crear Cuenta" severity="info" [raised]="true"
+                    size="small" />
+            </div>
+        </form>
         <p class="text-center text-sm font-light pt-4">
             ¿Ya tienes una cuenta?
-            <a routerLink="/login" class="hover:underline cursor-pointer text-sky-500">Inicia sesión
-                Ahora</a>
+            <a routerLink="/login" class="hover:underline cursor-pointer text-sky-500">Inicia sesión</a>
         </p>
+        <p *ngIf="error" class="text-red-600 text-sm text-center mt-2">{{ error }}</p>
     </div>
 </div>
