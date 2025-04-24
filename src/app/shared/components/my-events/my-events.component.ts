@@ -22,11 +22,7 @@ export class MyEventsComponent {
   constructor(private eventsService: EventService) {}
 
   ngOnInit(): void {
-<<<<<<< HEAD
     this.events$ = this.eventsService.getMyEvents();
-=======
-    this.events$ = this.eventsService.myEvents();
->>>>>>> d8bd9cb (eventos)
   }
 
   trackByIndex(_index: number, _item: any): number {
