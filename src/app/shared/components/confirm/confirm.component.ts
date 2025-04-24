@@ -4,10 +4,11 @@ import { finalize } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-confirm',
-  imports: [ReactiveFormsModule, ButtonModule],
+  imports: [ReactiveFormsModule, ButtonModule, CommonModule],
   templateUrl: './confirm.component.html',
   styleUrl: './confirm.component.css'
 })

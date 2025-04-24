@@ -7,29 +7,45 @@ import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { EventService } from '../../services/event.service';
 import { RouterModule } from '@angular/router';
+import { ConfirmDialog } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmationService, MessageService } from 'primeng/api';
+
+
 
 @Component({
   selector: 'event',
-  imports: [CommonModule, CardModule, Chip, ButtonModule, RouterModule],
+  imports: [CommonModule, CardModule, Chip, ButtonModule, RouterModule, ConfirmDialog, ToastModule],
+  providers: [MessageService, ConfirmationService],
   templateUrl: './event.component.html',
   styleUrl: './event.component.css'
 })
 export class EventComponent {
   events$!: Observable<EventModel[]>;
 
-  constructor(private eventsService: EventService) {}
+  constructor(private eventsService: EventService, private messageService: MessageService) {}
 
   ngOnInit(): void {
     this.events$ = this.eventsService.getEvents();
   }
 
-  onReserve(id: string){
+  onReserve(id: string) {
     this.eventsService.reserveEvent(id).subscribe({
       next: (response) => {
         console.log('Reserva exitosa', response);
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Reserva',
+          detail: '¡Reserva realizada correctamente!'
+        });
       },
       error: (error) => {
         console.error('Error al reservar el evento', error);
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Reserva',
+          detail: 'No se pudo realizar la reserva'
+        });
       }
     });
   }
