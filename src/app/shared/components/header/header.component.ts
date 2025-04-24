@@ -29,8 +29,6 @@ export class HeaderComponent implements OnInit {
   constructor(private eventService: EventService) {}
 
   ngOnInit() {
-    console.log('HeaderComponent inicializado');
-
     this.cities = [
       { name: 'Bogotá' },
       { name: 'Medellin' },
@@ -56,7 +54,6 @@ export class HeaderComponent implements OnInit {
   }
 
   selectCategory(category: string) {
-    console.log(category)
     this.selectedCategory = category;
     this.onSearch();
   }
