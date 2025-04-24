@@ -1,1 +1,10 @@
 @import "tailwindcss";
+.custom-chip {
+    background-color: #DBEAFE !important;
+}
+
+/* .p-inputtext, .p-select {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+} */

@@ -6,10 +6,12 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { BookingComponent } from './shared/components/booking/booking.component';
 import { CommonModule } from '@angular/common';
+import { CreateEventComponent } from './shared/components/create-event/create-event.component';
+import { MyEventsComponent } from './shared/components/my-events/my-events.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MenuComponent, HeaderComponent, EventComponent, FooterComponent, BookingComponent, CommonModule],
+  imports: [RouterOutlet, MenuComponent, HeaderComponent, EventComponent, FooterComponent, BookingComponent, CreateEventComponent, MyEventsComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
