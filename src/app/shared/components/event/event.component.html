@@ -1,38 +1,51 @@
 <ng-container *ngIf="events$ | async as events; else noEvents">
   <h2 class="text-base pl-5">Eventos Disponibles</h2>
 
-  <div class="flex flex-wrap gap-4 justify-start p-4">
-    <p-card *ngFor="let evento of events; let i = index; trackBy: trackByIndex"
-      [style]="{ width: '18rem', height:'25rem', overflow: 'hidden' }">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 text-sm">
+    <p-card
+      *ngFor="let evento of events; let i = index; trackBy: trackByIndex"
+      class="w-full h-[25rem] overflow-hidden flex flex-col border border-gray-200 rounded-lg"
+    >
       <ng-template pTemplate="header">
-        <img [src]="evento.image" [alt]="evento.title" class="w-full h-40 object-cover" />
+        <img
+          [src]="evento.image"
+          [alt]="evento.title"
+          class="w-full h-40 object-cover"
+        />
       </ng-template>
-
-      <div class="space-y-1 text-xs">
+  
+      <div class="flex-1 space-y-1 text-xs p-3">
         <div class="flex justify-between items-center mb-2">
           <p-chip class="text-xs custom-chip">{{ evento.category }}</p-chip>
           <p class="text-gray-600 font-bold">${{ evento.price }}</p>
         </div>
-
-        <p class="font-bold">{{ evento.title }}</p>
-        <p class="text-gray-600">
-          <i class="pi pi-calendar mr-2"></i>{{ evento.startDate | date:'shortDate' }}
-          <i class="pi pi-clock mr-1"></i> {{ evento.endDate | date:'shortTime'}}
+  
+        <p class="font-bold truncate">{{ evento.title }}</p>
+        <p class="text-gray-600 truncate">
+          <i class="pi pi-calendar mr-2"></i>
+          {{ evento.startDate | date:'shortDate' }}
+          <i class="pi pi-clock ml-2 mr-1"></i>
+          {{ evento.endDate | date:'shortTime' }}
         </p>
-        <p>
-          <i class="pi pi-map-marker"></i>
-          {{ evento.location }}
+        <p class="text-gray-600 truncate">
+          <i class="pi pi-map-marker mr-1"></i>{{ evento.location }}
         </p>
       </div>
-
+  
       <ng-template pTemplate="footer">
         <div class="p-3">
-          <button pButton type="button" label="Reservar Ahora" icon="pi pi-ticket"
-            class="p-button-sm p-button-info w-full"></button>
+          <button
+            pButton
+            type="button"
+            label="Reservar Ahora"
+            icon="pi pi-ticket"
+            class="p-button-sm p-button-info w-full"
+          ></button>
         </div>
       </ng-template>
     </p-card>
   </div>
+  
 
 </ng-container>
 
