@@ -30,6 +30,8 @@
         <p class="text-gray-600 truncate">
           <i class="pi pi-map-marker mr-1"></i>{{ evento.location }}
         </p>
+        Entradas disponibles: {{ evento.quantityAvailable }}
+        <p-progressbar [value]="evento.availablePercentage" />
       </div>
       <p-toast />
       <p-confirmdialog />

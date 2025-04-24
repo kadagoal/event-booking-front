@@ -48,6 +48,12 @@ export class MenuComponent {
                         icon: 'pi pi-book',
                         routerLink: '/crear-evento',
                         routerLinkActiveOptions: { exact: true }
+                    },
+                    {
+                        label: 'Mis Reservas',
+                        icon: 'pi pi-book',
+                        routerLink: '/reservas',
+                        routerLinkActiveOptions: { exact: true }
                     }
                 ]
             }else{

@@ -11,6 +11,8 @@ export interface EventModel {
     reservations: number,
     soldPercentage: number;
     label: string
+    availablePercentage: number;
+    quantityAvailable: number;
 }
 
 export interface EventsResponse {

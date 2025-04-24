@@ -30,6 +30,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.cities = [
+      { name: '' },
       { name: 'Bogotá' },
       { name: 'Medellin' },
       { name: 'Fusagasuga' },
