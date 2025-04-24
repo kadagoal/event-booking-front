@@ -28,4 +28,14 @@ export class BookingComponent {
         return _index;
       }
 
+      dowload(){
+          const pdfUrl = 'https://example.com/mi-archivo.pdf';
+          const link = document.createElement('a');
+          link.href = pdfUrl;
+          link.download = 'mi-boleta.pdf';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+      }
+
 }

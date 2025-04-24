@@ -7,5 +7,6 @@ export interface Booking {
     endDate: string;
     location: string;
     image: string;
-    tickets: number
+    tickets: number;
+    eventId: any;
   }

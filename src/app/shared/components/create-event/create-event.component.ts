@@ -74,7 +74,10 @@ export class CreateEventComponent {
     this.eventService.createEvent(payload)
       .pipe(finalize(() => (this.loading = false)))
       .subscribe({
-        next: () => this.router.navigate(['/eventos']),
+        next: () => {
+          this.eventService.loadDefaultEvents();
+          this.router.navigate(['/eventos']);
+        },
         error: err => this.error = err.error?.message || 'Error al crear el evento'
       });
   }

@@ -1,5 +1,5 @@
 export interface EventModel {
-    id: number;
+    _id: string;
     title: string;
     category: string;
     price: number;

@@ -23,6 +23,17 @@ export class EventComponent {
     this.events$ = this.eventsService.getEvents();
   }
 
+  onReserve(id: string){
+    this.eventsService.reserveEvent(id).subscribe({
+      next: (response) => {
+        console.log('Reserva exitosa', response);
+      },
+      error: (error) => {
+        console.error('Error al reservar el evento', error);
+      }
+    });
+  }
+
   trackByIndex(_index: number, _item: any): number {
     return _index;
   }

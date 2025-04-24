@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { AuthResponse, Credentials, RegisterData, RegisterResponse } from '../models/auth.model';
 import { mapTo, Observable, tap } from 'rxjs';
 import { TokenStorageService } from './token-storage.service';
+import { environment } from '../../../environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly apiUrl = `https://event-booking-back.onrender.com/api/users`;
+  private readonly apiUrl = `${environment.apiUrl}/api/users`;
 
   constructor(private http: HttpClient,
     private tokenStorage: TokenStorageService) { }

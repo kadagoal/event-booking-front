@@ -17,7 +17,7 @@ export class EventService {
     this.loadDefaultEvents();
   }
 
-  private loadDefaultEvents(): void {
+  loadDefaultEvents(): void {
     const params = new HttpParams()
       .set('page', 1)
       .set('limit', 100);
@@ -34,6 +34,10 @@ export class EventService {
     return this.events$;
   }
 
+  reserveEvent(eventId: string): Observable<any> {
+    const payload = { eventId };
+    return this.http.post(`${environment.apiUrl}api/reservations`, payload);
+  }
 
   myEvents(): Observable<EventModel[]> {
     return this.http.get<EventModel[]>(`${this.apiUrl}/my-events`);

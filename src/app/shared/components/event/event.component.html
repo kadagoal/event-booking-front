@@ -34,13 +34,8 @@
   
       <ng-template pTemplate="footer">
         <div class="p-3">
-          <button
-            pButton
-            type="button"
-            label="Reservar Ahora"
-            icon="pi pi-ticket"
-            class="p-button-sm p-button-info w-full"
-          ></button>
+          <button pButton type="button" label="Reservar Ahora" icon="pi pi-ticket" (click)="onReserve(evento._id)"
+            class="p-button-sm p-button-info w-full"></button>
         </div>
       </ng-template>
     </p-card>
