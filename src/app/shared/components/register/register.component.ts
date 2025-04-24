@@ -54,7 +54,7 @@ export class RegisterComponent {
     this.auth.register(this.registerForm.value)
       .pipe(finalize(() => (this.loading = false)))
       .subscribe({
-        next: () => this.router.navigate(['/auth/confirm'], {
+        next: () => this.router.navigate(['/confirm'], {
           queryParams: { email: this.registerForm.get('email')!.value }
         }),
         error: err => this.error = err.error?.message || 'Error al registrar'

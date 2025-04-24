@@ -26,11 +26,8 @@ export class ConfirmComponent {
   ) {}
 
   ngOnInit() {
-    // Recupera el email enviado como parámetro de ruta o queryParam
-    this.email = this.route.snapshot.queryParamMap.get('email') || '';
-
     this.confirmForm = this.fb.group({
-      email: [{ value: this.email, disabled: true }, [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
       code: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]]
     });
   }
@@ -40,7 +37,6 @@ export class ConfirmComponent {
     this.loading = true;
     this.error = null;
 
-    // Reactiva el control email para enviarlo
     const payload = {
       email: this.confirmForm.get('email')!.value,
       code: this.confirmForm.get('code')!.value
@@ -49,7 +45,7 @@ export class ConfirmComponent {
     this.auth.confirmAccount(payload)
       .pipe(finalize(() => (this.loading = false)))
       .subscribe({
-        next: () => this.router.navigate(['/eventos']),
+        next: () => this.router.navigate(['/login']),
         error: err => this.error = err.error?.message || 'Error al confirmar la cuenta'
       });
   }

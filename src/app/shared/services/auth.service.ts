@@ -16,10 +16,7 @@ export class AuthService {
     login(creds: Credentials): Observable<void> {
       return this.http.post<AuthResponse>(`${this.apiUrl}/login`, creds).pipe(
         tap(response => {
-          console.log(response);
-          
-          // guarda los tokens al recibir la respuesta
-          this.tokenStorage.saveTokens(response.tokens);
+          this.tokenStorage.saveTokens(response.tokens, response.role);
         }),
         mapTo(void 0)
       );

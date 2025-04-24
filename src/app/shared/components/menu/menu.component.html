@@ -1,5 +1,6 @@
 <div class="card text-xs">
     <p-menubar [model]="items">
-        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
+        <a *ngIf="!isLoggedIn()" routerLink="login" class="text-sm font-medium text-gray-700 hover:text-gray-900">iniciar sesión</a>
+        <a *ngIf="isLoggedIn()" class="text-sm font-medium text-gray-700 hover:text-gray-900" (click)="logOuth()">Cerrar sesión</a>
     </p-menubar>
 </div>

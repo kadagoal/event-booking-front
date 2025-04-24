@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, of, tap } from 'rxjs';
 import { CreateEvent, EventModel, EventsResponse } from '../models/event.model';
+import { environment } from '../../../environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
 
-  private readonly apiUrl = `https://event-booking-back.onrender.com/api/events`;
+  private readonly apiUrl = `${environment.apiUrl}api/events`;
 
   constructor(private http: HttpClient) {}
 
@@ -18,6 +19,12 @@ export class EventService {
       map(res => res.data)
     );
   }
+
+
+  myEvents(): Observable<EventModel[]> {
+    return this.http.get<EventModel[]>(`${this.apiUrl}/my-events`);
+  }
+  
 
   createEvent(payload: CreateEvent): Observable<EventModel> {
     return this.http.post<EventModel>(this.apiUrl, payload);

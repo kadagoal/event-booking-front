@@ -6,14 +6,12 @@
         </p>
 
         <form [formGroup]="confirmForm" (ngSubmit)="onSubmit()" class="space-y-4">
-            <!-- Email (solo lectura) -->
             <div class="flex flex-col text-sm">
                 <label for="email" class="mb-1">Correo electrónico</label>
-                <input pInputText id="email" formControlName="email" [disabled]="true"
+                <input pInputText id="email" formControlName="email" 
                     class="w-full border rounded px-3 py-2 bg-gray-100 cursor-not-allowed" />
             </div>
 
-            <!-- Código -->
             <div class="flex flex-col text-sm">
                 <label for="code" class="mb-1">Código de confirmación</label>
                 <input pInputText id="code" formControlName="code" maxlength="6" placeholder="XXXXXX"

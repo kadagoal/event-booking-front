@@ -14,6 +14,7 @@ export interface Credentials {
   export interface AuthResponse {
     message: string;
     tokens: Tokens;
+    role: string;
   }
 
   export interface RegisterData {
