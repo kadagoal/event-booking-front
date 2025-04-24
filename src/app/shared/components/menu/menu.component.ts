@@ -68,7 +68,14 @@ export class MenuComponent {
             }
             
         }else{
-            this.items = []
+            this.items = [
+                {
+                    label: 'Eventos',
+                    icon: 'pi pi-calendar-clock',
+                    routerLink: '/eventos',
+                    routerLinkActiveOptions: { exact: true }
+                }
+            ]
         }
         
     }
