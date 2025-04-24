@@ -42,7 +42,6 @@ export class EventService {
   myEvents(): Observable<EventModel[]> {
     return this.http.get<EventModel[]>(`${this.apiUrl}/my-events`);
   }
-  
 
   createEvent(payload: CreateEvent): Observable<EventModel> {
     return this.http.post<EventModel>(this.apiUrl, payload);
@@ -50,6 +49,10 @@ export class EventService {
 
   getMyEvents(): Observable<EventModel[]> {
     return this.http.get<EventModel[]>(`${this.apiUrl}/my-events`);
+  }
+
+  deleteReservation(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/reservations/${id}`);
   }
 
   searchEvents(filters: {
