@@ -36,7 +36,9 @@ export class EventComponent {
           summary: 'Reserva',
           detail: '¡Reserva realizada correctamente!'
         });
-        this.router.navigate(['/reservas']);
+        setTimeout(() => {
+          this.router.navigate(['/reservas']);
+        }, 2000);
       },
       error: (error) => {
         this.messageService.add({
