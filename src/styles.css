@@ -2,3 +2,7 @@
 .custom-chip {
     background-color: #DBEAFE !important;
 }
+
+.p-card-body{
+    padding: 10px !important;
+}
