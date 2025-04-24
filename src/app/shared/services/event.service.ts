@@ -23,5 +23,7 @@ export class EventService {
     return this.http.post<EventModel>(this.apiUrl, payload);
   }
 
-  
+  getMyEvents(): Observable<EventModel[]> {
+    return this.http.get<EventModel[]>(`${this.apiUrl}/my-events`);
+  }
 }
