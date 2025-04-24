@@ -28,24 +28,34 @@ export class EventComponent {
     this.events$ = this.eventsService.getEvents();
   }
 
-  onReserve(id: string) {
-    this.eventsService.reserveEvent(id).subscribe({
-      next: (response) => {
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Reserva',
-          detail: '¡Reserva realizada correctamente!'
-        });
-        this.router.navigate(['/reservas']);
-      },
-      error: (error) => {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Reserva',
-          detail: 'No se pudo realizar la reserva'
-        });
-      }
-    });
+  onReserve(id: string, quantity: number): void {
+    if(quantity >= 0) {
+      this.eventsService.reserveEvent(id).subscribe({
+        next: (response) => {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Reserva',
+            detail: '¡Reserva realizada correctamente!'
+          });
+          this.eventsService.loadDefaultEvents();
+          this.router.navigate(['/reservas']);
+        },
+        error: (error) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Reserva',
+            detail: 'No se pudo realizar la reserva'
+          });
+        }
+      });
+    }else{
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Reserva',
+        detail: 'No hay reservas disponibles'
+      });
+    }
+    
   }
 
   trackByIndex(_index: number, _item: any): number {

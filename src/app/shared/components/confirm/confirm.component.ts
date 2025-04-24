@@ -8,16 +8,16 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-confirm',
+  standalone: true,
   imports: [ReactiveFormsModule, ButtonModule, CommonModule],
   templateUrl: './confirm.component.html',
   styleUrl: './confirm.component.css'
 })
 export class ConfirmComponent {
-
   confirmForm!: FormGroup;
   loading = false;
   error: string | null = null;
-  email!: string;
+  submitted = false;
 
   constructor(
     private fb: FormBuilder,
@@ -27,19 +27,23 @@ export class ConfirmComponent {
   ) {}
 
   ngOnInit() {
+    const emailFromQuery = this.route.snapshot.queryParamMap.get('email') || '';
+
     this.confirmForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: [{ value: emailFromQuery, disabled: true }, [Validators.required, Validators.email]],
       code: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]]
     });
   }
 
   onSubmit() {
+    this.submitted = true;
+
     if (this.confirmForm.invalid) return;
     this.loading = true;
     this.error = null;
 
     const payload = {
-      email: this.confirmForm.get('email')!.value,
+      email: this.confirmForm.getRawValue().email, // `getRawValue()` porque el email está deshabilitado
       code: this.confirmForm.get('code')!.value
     };
 
@@ -50,5 +54,4 @@ export class ConfirmComponent {
         error: err => this.error = err.error?.message || 'Error al confirmar la cuenta'
       });
   }
-
 }
