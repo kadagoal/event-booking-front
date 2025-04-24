@@ -1,0 +1,51 @@
+[
+    {
+      "id": 1,
+      "title": "Concierto de Rosalía",
+      "date": "2025-04-25",
+      "time": "21:00",
+      "location": "Palau Sant Jordi, Barcelona",
+      "imageUrl": "assets/images/rosalia.jpg",
+      "category": "Concierto",
+      "soldPercentage": 98,
+      "price": 75,
+      "trending": true
+    },
+    {
+      "id": 2,
+      "title": "Festival de Jazz",
+      "date": "2025-05-10",
+      "time": "19:30",
+      "location": "Teatre Nacional, Madrid",
+      "imageUrl": "assets/images/jazz.jpg",
+      "category": "Música",
+      "soldPercentage": 65,
+      "price": 50,
+      "trending": false
+    },
+    {
+      "id": 3,
+      "title": "Obra de Teatro “Hamlet”",
+      "date": "2025-06-02",
+      "time": "20:00",
+      "location": "Teatro Real, Madrid",
+      "imageUrl": "assets/images/hamlet.jpg",
+      "category": "Teatro",
+      "soldPercentage": 80,
+      "price": 40,
+      "trending": false
+    },
+    {
+      "id": 4,
+      "title": "Partido de Fútbol Barça vs Madrid",
+      "date": "2025-07-15",
+      "time": "18:00",
+      "location": "Camp Nou, Barcelona",
+      "imageUrl": "assets/images/futbol.jpg",
+      "category": "Deportes",
+      "soldPercentage": 100,
+      "price": 120,
+      "trending": true
+    }
+  ]
+  

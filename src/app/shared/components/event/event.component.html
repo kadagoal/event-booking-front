@@ -1,0 +1,54 @@
+<ng-container *ngIf="events$ | async as events; else noEvents">
+  <h2 class="text-base pl-5">Eventos Disponibles</h2>
+
+    <!-- Contenedor único flex con wrap y separación -->
+    <div class="flex flex-wrap gap-4 justify-start p-4">
+      <p-card
+        *ngFor="let evento of events; let i = index; trackBy: trackByIndex"
+        [style]="{ width: '18rem', height:'25rem', overflow: 'hidden' }"
+        class="flex-none"
+      >
+      <ng-template pTemplate="header">
+        <img
+          [src]="evento.image"
+          [alt]="evento.title"
+          class="w-full h-40 object-cover"
+        />
+      </ng-template>
+  
+        <div class="space-y-1 text-xs">
+
+          <div class="flex justify-between items-center mb-2">
+            <p-chip class="text-xs" icon="pi pi-palette">{{ evento.category }}</p-chip>
+            <p class="text-gray-600 font-bold">${{ evento.price }}</p>
+          </div>
+
+          <p class="font-bold">{{ evento.title }}</p>
+          <p class="text-gray-600">
+            <i class="pi pi-calendar mr-2"></i>{{ evento.date }}
+            <i class="pi pi-clock mr-1"></i> {{ evento.time }}</p>
+          <p>
+            <i class="pi pi-map-marker"></i>
+            {{ evento.location }}</p>
+        </div>
+  
+        <ng-template pTemplate="footer">
+          <div class="p-3">
+            <button
+              pButton
+              type="button"
+              label="Reservar Ahora"
+              icon="pi pi-ticket"
+              class="p-button-sm p-button-info w-full"
+            ></button>
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+  
+  </ng-container>
+  
+  <ng-template #noEvents>
+    <p class="p-4 text-center text-gray-500">No se encontraron eventos</p>
+  </ng-template>
+  
